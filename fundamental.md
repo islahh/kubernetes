@@ -204,6 +204,3 @@ Some important points about the above YAML:
 
 ingress: 
 container?
-![image](https://github.com/user-attachments/assets/f3c6aa2b-ab92-48de-84ef-6075dd264e0d)
-![image](https://github.com/user-attachments/assets/bf4d42a5-3bf5-44a6-a806-c7ecfc16a9d7)
-![image](https://github.com/user-attachments/assets/2b746b97-3a33-45fe-a0f6-4c3ad857d8a4)

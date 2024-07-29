@@ -204,3 +204,16 @@ Some important points about the above YAML:
 
 ingress: 
 container?
+
+
+## Side and Future Notes
+### Helm Charts
+
+Helm charts are a collection of files that describe a Kubernetes cluster’s resources and package them together as an application. They comprise three basic components: 
+
+The chart - Chart.yaml defines the application metadata like name, version, dependencies, etc. 
+Values - values.yaml sets values, which is how you will set variable substitutions for reusing your chart
+You may also have a values JSON schema that describes a structure for the values file, which can help in creating dynamic forms and validating your values parameters.
+The templates directory - templates/ houses your templates and combines them with the values set in your values.yaml file to create manifests
+The charts directory - charts/ stores any chart dependencies you define in Chart.yaml and reconstruct with helm dependency build or helm dependency update.
+Each time you install a Helm chart, you also create an instance of it, called a release. Helm charts are maintained with each new release, and you can easily use previous versions of the chart to roll back to your preferred configuration.

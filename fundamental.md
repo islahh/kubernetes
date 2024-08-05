@@ -96,7 +96,7 @@ The port mapping is important over here:
 - The port attribute is the service port
 - The targetPort is the port exposed by your application container. For example, a webserver running on port 3000.
 
-### 3. Deployment
+<details><summary>Deployment</summary>
 A Kubernetes Deployment is a higher-level resource you can use for deploying applications and updating them declaratively.
 When you create a Deployment, a ReplicaSet resource is also created under the hood to control the pods.
 
@@ -136,8 +136,8 @@ It tells Kubernetes how many pods need to be created for the nginx container.
 
 Note that if you deploy pods using a Deployment, you don’t need to create separate YAML files for pods. 
 Neither do you need to create a separate ReplicaSet resource.
-
-### 4. Volumes
+</details> 
+<details><summary>###Volumes</summary>
 Kubernetes volumes are a component of a pod and not a standalone object.
 
 But what is the use of volumes?
@@ -199,12 +199,48 @@ Some important points about the above YAML:
 - In the above example, the emptyDir volume is used for sharing files between the “sidecar” container and the “nginx” container.
 - Within the containers section, the volume “shared-data” is mounted at /usr/share/nginx/html using the volumeMounts section. The mounting is done for both the containers enabling them to share the data.
 - When the pod is destroyed, the volume is also destroyed along with it.
+</details>
+<details>
+  <summary>Kubernetes Namespaces</summary>
+
+ In Kubernetes, a namespace is a way to divide cluster resources into virtual partitions. It's primarily used to create separate environments within a single Kubernetes cluster, allowing teams or projects to share the same physical cluster securely. Here are key aspects of namespaces in Kubernetes:
+
+Logical Partitioning: Namespaces provide a way to logically divide cluster resources, such as pods, services, and replication controllers, into distinct groups. This separation helps in organizing and managing resources and enables multi-tenancy within a cluster.
+
+Isolation and Scope: Each namespace provides a scoped environment where resources within one namespace are isolated from resources in another namespace. This isolation helps prevent naming conflicts and resource collisions between different teams or projects using the same cluster.
+
+Default Namespace: Kubernetes clusters come with a default namespace called default. If resources are created without specifying a namespace, they are automatically assigned to this default namespace.
+
+Managing Resources: Resources within a namespace can reference each other directly by their names, without needing to specify the namespace explicitly. For example, a service within a namespace can reference a pod by its name within the same namespace.
+
+Security and Access Control: Kubernetes uses namespaces for access control and resource quota management. Role-based access control (RBAC) policies can be applied per namespace, allowing fine-grained control over who can access or modify resources within that namespace.
+
+Scoping Network Policies: Network policies can be scoped to namespaces, defining rules for inbound and outbound traffic to and from pods within the same namespace. This helps enforce security and communication policies at the namespace level.
+
+Resource Quotas: Quotas can be applied per namespace to limit the amount of compute resources (CPU, memory) and storage that can be consumed by resources within that namespace. This prevents one namespace from consuming all cluster resources and affecting others.
+
+Overall, namespaces in Kubernetes provide a powerful mechanism for managing and organizing cluster resources, promoting isolation, security, and efficient resource utilization within a shared Kubernetes environment
+
+In Summary
+- Namespace provides a way to divide cluster resources into separate environments.
+- Namespace is useful for organizing resources, managing permissions, and avoiding naming conflicts.
+</details>
 
 ## NEXT
 
 ingress: 
-container?
+<details>
+   <summary>Ingress</summary>
+- Manages external access to services within a cluster, typically HTTP.
+- Provides load balancing, SSL termination, and name-based virtual hosting.
+</details>
 
+
+## Key Terms and Concepts
+
+1. Cloud Native?
+cloud native technologies are open-source projects designed to let technologists use cloud computing services to automatically deploy and scale applications.
+Kubernetes is on example of cloud native technology.
 
 ## Side and Future Notes
 ### Helm Charts
@@ -217,3 +253,6 @@ Helm charts are a collection of files that describe a Kubernetes cluster’s res
 - The templates directory - templates/ houses your templates and combines them with the values set in your values.yaml file to create manifests
 - The charts directory - charts/ stores any chart dependencies you define in Chart.yaml and reconstruct with helm dependency build or helm dependency update.
 Each time you install a Helm chart, you also create an instance of it, called a release. Helm charts are maintained with each new release, and you can easily use previous versions of the chart to roll back to your preferred configuration.
+
+
+

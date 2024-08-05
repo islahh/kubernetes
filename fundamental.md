@@ -34,7 +34,7 @@ A worker node is made up of the following components:
 - kube-proxy for communication of pods within the cluster and to the outside network.
 
 **Top Kubernetes Resources**
-### 1. pods
+<details><summary>Pods</summary>
 Pods are the smallest atomic unit that you create in Kubernetes.
 
 Aren’t pods the same as a container?
@@ -72,8 +72,9 @@ To create a Kubernetes resource in your cluster, you use the kubectl command. On
 $ kubectl apply -f <file-name>.yaml
 $ kubectl get po
 ``` 
+</details>
 
-### 2. service
+<details><summary>Service</summary>
 Kubernetes is ideal for managing microservices, deploying one microservice per pod, and ensuring they can communicate seamlessly. Pods, the smallest deployable units in Kubernetes, often need to interact with each other, necessitating a mechanism for pods to locate and connect with each other within the cluster. Kubernetes Services are pivotal in addressing this need.
 ![image](https://github.com/user-attachments/assets/f3c6aa2b-ab92-48de-84ef-6075dd264e0d)
 
@@ -95,8 +96,10 @@ The port mapping is important over here:
 
 - The port attribute is the service port
 - The targetPort is the port exposed by your application container. For example, a webserver running on port 3000.
-
+</details>
+   
 <details><summary>Deployment</summary>
+   
 A Kubernetes Deployment is a higher-level resource you can use for deploying applications and updating them declaratively.
 When you create a Deployment, a ReplicaSet resource is also created under the hood to control the pods.
 
@@ -137,7 +140,9 @@ It tells Kubernetes how many pods need to be created for the nginx container.
 Note that if you deploy pods using a Deployment, you don’t need to create separate YAML files for pods. 
 Neither do you need to create a separate ReplicaSet resource.
 </details> 
-<details><summary>###Volumes</summary>
+
+<details><summary>Volumes</summary>
+   
 Kubernetes volumes are a component of a pod and not a standalone object.
 
 But what is the use of volumes?

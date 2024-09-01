@@ -229,6 +229,10 @@ Overall, namespaces in Kubernetes provide a powerful mechanism for managing and 
 In Summary
 - Namespace provides a way to divide cluster resources into separate environments.
 - Namespace is useful for organizing resources, managing permissions, and avoiding naming conflicts.
+### NOTES FROM LINKEDIN COURSE
+- Namespaces in Kubernetes: They help isolate and organize workloads, allowing you to separate applications and microservices in different environments like development and production.
+- Creating a Namespace: You can create a namespace using a YAML manifest and the kubectl apply -f namespace.yaml command.
+- Managing Namespaces: Use kubectl get namespaces to list namespaces and kubectl delete -f namespace.yaml to delete them.
 </details>
 
 ## NEXT
@@ -238,6 +242,78 @@ ingress:
    <summary>Ingress</summary>
 - Manages external access to services within a cluster, typically HTTP.
 - Provides load balancing, SSL termination, and name-based virtual hosting.
+</details>
+
+
+<details>
+   <summary>ConfigMap</summary>
+Configuration in Kubernetes:
+
+Traditional Methods: Just like on a native host, you can configure software using command line arguments, environment variables, and config files.
+Kubernetes' Opinion: Kubernetes encourages separating code from its configuration. This is reflected in its design and helps in managing configurations more effectively.
+
+ConfigMaps:
+
+What is a ConfigMap?: A ConfigMap is a Kubernetes object used to store configuration data in key-value pairs. This separates the configuration from the application code.
+Structure: A ConfigMap has an apiVersion, kind, and metadata section, but it doesn't have a spec section. Instead, it goes straight to data, which contains the key-value pairs.
+
+Using ConfigMaps:
+
+Environment Variables: You can pass configuration data to your pods using environment variables. For example, you can override the color of a container by setting an environment variable using a ConfigMap.
+Config Files: ConfigMaps can also store entire configuration files. You can create a ConfigMap from a file and then mount it as a volume in your pod, making the file available to your application.
+
+
+Example Breakdown:
+Environment Variable Example:
+
+ConfigMap Definition:
+yaml
+``` bash
+apiVersion: v1
+kind: ConfigMap
+metadata:
+name: color-config
+data:
+colour: pink
+```
+
+Pod Definition:
+yaml
+``` bash
+env:
+name: COLOUR
+valueFrom:
+configMapKeyRef:
+name: color-config
+key: colour
+```
+Outcome: When the pod runs, it uses the colour value from the ConfigMap, setting the environment variable COLOUR to pink.
+
+
+Config File Example:
+
+Creating a ConfigMap from a File:
+bash
+kubectl create configmap website --from-file=index.html
+
+Pod Definition:
+yaml
+``` bash
+volumes:
+name: website-volume
+configMap:
+name: website
+volumeMounts:
+mountPath: /usr/share/nginx/html
+name: website-volume
+```
+Outcome: The ConfigMap website is mounted as a volume, replacing the default Nginx home page with the custom index.html file.
+
+
+
+Why Use ConfigMaps?
+Separation of Concerns: Keeping configuration separate from code makes it easier to manage and update configurations without changing the application code.
+Flexibility: ConfigMaps allow you to change configurations dynamically, making your applications more flexible and easier to manage.
 </details>
 
 

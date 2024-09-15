@@ -335,5 +335,11 @@ Helm charts are a collection of files that describe a Kubernetes cluster’s res
 - The charts directory - charts/ stores any chart dependencies you define in Chart.yaml and reconstruct with helm dependency build or helm dependency update.
 Each time you install a Helm chart, you also create an instance of it, called a release. Helm charts are maintained with each new release, and you can easily use previous versions of the chart to roll back to your preferred configuration.
 
+Explosion of YAML: As you scale Kubernetes, you'll encounter a large number of YAML files, making it challenging to manage and maintain them.
+DRY Principle: The "Don't Repeat Yourself" (DRY) principle is crucial in software engineering to avoid redundancy. Tools like Helm, Jasonette, and Kustomize help manage and template YAML files to adhere to this principle.
+Helm and Kustomize: Helm is a popular tool for templating and managing YAML files, while Kustomize combines literal YAMLs with patches, gaining traction for its unique approach.
+
+These tools and principles are essential for maintaining efficient and manageable Kubernetes deployments.
+
 
 

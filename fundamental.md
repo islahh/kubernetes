@@ -324,6 +324,8 @@ cloud native technologies are open-source projects designed to let technologists
 Kubernetes is on example of cloud native technology.
 
 ## Side and Future Notes
+<details>
+  <summary>## Helm Charts</summary>
 ### Helm Charts
 
 Helm charts are a collection of files that describe a Kubernetes cluster’s resources and package them together as an application. They comprise three basic components: 
@@ -341,5 +343,35 @@ Helm and Kustomize: Helm is a popular tool for templating and managing YAML file
 
 These tools and principles are essential for maintaining efficient and manageable Kubernetes deployments.
 
+Helm Charts:
 
+What They Are: Helm charts are packages of pre-configured Kubernetes resources.
+How They Work: Think of a Helm chart as a blueprint for deploying an application. It contains templates that generate the YAML files needed to deploy your application in Kubernetes.
+
+Templates and Values:
+
+Templates: These are like the skeleton of your deployment files. They have placeholders that get filled in with actual values.
+Values Files: These files provide the actual values for the placeholders in your templates. You can have different values files for different environments (e.g., development and production).
+
+Example Scenario:
+
+Development vs. Production: Suppose you have a service that you want to deploy in both development and production environments. The core service is the same, but there are slight differences, like domain names and whether TLS (Transport Layer Security) is enabled.
+Using Helm: You create a Helm chart with templates for your service. You then create values files for each environment. For example, the development values file might set the domain to dev.example.com and disable TLS, while the production values file sets the domain to prod.example.com and enables TLS.
+
+Commands:
+
+helm template: This command processes your templates and values files to generate the final YAML files. You can use this to preview what will be deployed.
+helm install: This command deploys your application to the Kubernetes cluster using the generated YAML files.
+helm upgrade: This command updates an existing deployment with new changes. Helm tracks the history of deployments, so you can roll back if something goes wrong.
+
+
+Why Use Helm?
+DRY Principle: Helm helps you avoid repeating yourself by using templates and values files. This makes it easier to manage and update your deployments.
+Consistency: By using Helm, you ensure that your deployments are consistent across different environments.
+Ease of Management: Helm tracks the history of your deployments, making it easier to manage updates and rollbacks.
+
+Analogy:
+Think of Helm like a recipe book for cooking. The templates are the recipes, and the values files are the specific ingredients you use for different occasions. Whether you're cooking for a small family dinner (development) or a large banquet (production), the core recipe remains the same, but the ingredients might vary slightly.
+
+</details>
 

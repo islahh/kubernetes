@@ -177,3 +177,12 @@ kubectl exec -it pod_name /bin/sh
 ```
 kubectl exec -it pod_name -c container_name /bin/sh
 ```
+
+
+## Helm
+
+Helm is the package management system for Kubernetes, similar to NPM for Node.js or apt-get for Debian.
+It simplifies deploying applications to a Kubernetes cluster by packaging all necessary files into a single chart, allowing for easy installation with one command.
+Helm offers features like creating chart versions, upgrading, debugging deployments, and rolling back changes.
+The templating engine in Helm allows for dynamic rendering of values, enabling the deployment of the same application in different environments with varying configurations.
+Helm supports third-party software deployments, including tools like Datadog and Fluentd, as well as game servers like Minecraft.
